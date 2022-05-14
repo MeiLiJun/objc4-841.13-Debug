@@ -132,7 +132,7 @@ id objc_noop_imp(id self, SEL _cmd __unused) {
 * Some test code looks for the presence of this symbol.
 **********************************************************************/
 #if DEBUG != OBJC_IS_DEBUG_BUILD
-#error mismatch in debug-ness macros
+//#error mismatch in debug-ness macros
 // DEBUG is used in our code. OBJC_IS_DEBUG_BUILD is used in the
 // header declaration of _objc_isDebugBuild() because that header
 // is visible to other clients who might have their own DEBUG macro.
@@ -383,19 +383,19 @@ void environ_init(void)
     // older SDKs. LRU coalescing can reorder releases and certain older apps
     // are accidentally relying on the ordering.
     // rdar://problem/63886091
-    if (!dyld_program_sdk_at_least(dyld_fall_2020_os_versions))
-        DisableAutoreleaseCoalescingLRU = true;
+//    if (!dyld_program_sdk_at_least(dyld_fall_2020_os_versions))
+//        DisableAutoreleaseCoalescingLRU = true;
 
     // class_rx_t pointer signing enforcement is *disabled* by default unless
     // this OS feature is enabled, but it can be explicitly enabled by setting
     // the environment variable, for testing.
-    if (!os_feature_enabled_simple(objc4, classRxSigning, false))
-        DisableClassRXSigningEnforcement = true;
+//    if (!os_feature_enabled_simple(objc4, classRxSigning, false))
+//        DisableClassRXSigningEnforcement = true;
 
     // Faults for class_ro_t pointer signing enforcement are disabled by
     // default unless this OS feature is enabled.
-    if (!os_feature_enabled_simple(objc4, classRoSigningFaults, false))
-        DisableClassROFaults = true;
+//    if (!os_feature_enabled_simple(objc4, classRoSigningFaults, false))
+//        DisableClassROFaults = true;
 
     bool PrintHelp = false;
     bool PrintOptions = false;
@@ -462,9 +462,9 @@ void environ_init(void)
         }
     }
 
-    if (!os_feature_enabled_simple(objc4, preoptimizedCaches, true)) {
-        DisablePreoptCaches = true;
-    }
+//    if (!os_feature_enabled_simple(objc4, preoptimizedCaches, true)) {
+//        DisablePreoptCaches = true;
+//    }
 
     // Print OBJC_HELP and OBJC_PRINT_OPTIONS output.
     if (PrintHelp  ||  PrintOptions) {
